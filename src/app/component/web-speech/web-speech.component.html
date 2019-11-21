@@ -1,0 +1,25 @@
+
+  
+  <div class="center">
+    <button mat-fab (click)="startButton($event)">
+      <mat-icon *ngIf="!recognizing">mic</mat-icon>
+      <mat-icon *ngIf="recognizing">stop</mat-icon>
+    </button>
+  </div>
+  
+  <form >
+    <mat-form-field class="Texto">
+      <textarea matInput [value]="finalTranscript" placeholder="Speech Input Result" rows="10" disabled="true"></textarea>
+    </mat-form-field>
+  </form>
+<div>
+  <mat-select placeholder="Select your language"
+                  [(ngModel)]="currentLanguage" [disabled]="recognizing">
+         <mat-option *ngFor="let language of languages" [value]="language" (click)="onSelectLanguage(language)">
+          {{language}}
+        </mat-option>
+ 
+      </mat-select>
+</div>
+  <mat-card *ngIf="notification" class="notification">{{notification}}</mat-card>
+   
