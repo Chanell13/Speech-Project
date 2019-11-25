@@ -16,10 +16,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { SpeechRecognizerService } from './services/speech-recognizer.service';
 import { SpeechSynthesizerService } from './services/speech-synthesizer.service';
 import {MatInputModule, MatButtonModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { MicroDirective } from './Directive/micro.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
-    WebSpeechComponent
+    WebSpeechComponent,
+    MicroDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import {MatInputModule, MatButtonModule} from '@angular/material';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    HttpClientModule
 
   ],
   providers: [SpeechRecognizerService,

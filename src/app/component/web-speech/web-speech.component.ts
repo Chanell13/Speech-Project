@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SpeechRecognizerService } from 'src/app/services/speech-recognizer.service';
 import { SpeechNotification } from 'src/app/model/speech-notification';
 import { SpeechError } from 'src/app/model/speech-error';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-web-speech',
@@ -17,7 +19,14 @@ export class WebSpeechComponent implements OnInit {
   // actionContext: ActionContext = new ActionContext();
 
   constructor(private changeDetector: ChangeDetectorRef,
-              private speechRecognizer: SpeechRecognizerService) { }
+              private speechRecognizer: SpeechRecognizerService,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
+               /*   this.matIconRegistry.addSvgIcon(
+                  "off",
+                  this.domSanitizer.bypassSecurityTrustResourceUrl("off.svg")
+                ); */
+              }
 
   ngOnInit() {
 
