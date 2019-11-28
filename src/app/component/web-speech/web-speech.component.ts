@@ -20,12 +20,8 @@ export class WebSpeechComponent implements OnInit {
 
   constructor(private changeDetector: ChangeDetectorRef,
               private speechRecognizer: SpeechRecognizerService,
-              private matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer) {
-               /*   this.matIconRegistry.addSvgIcon(
-                  "off",
-                  this.domSanitizer.bypassSecurityTrustResourceUrl("off.svg")
-                ); */
+              ) {
+
               }
 
   ngOnInit() {

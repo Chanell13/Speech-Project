@@ -1,7 +1,12 @@
 <div class="center">
-  <button mat-fab (click)="startButton($event)">
-    <mat-icon *ngIf="!recognizing">mic</mat-icon>
-    <mat-icon appMicro *ngIf="recognizing">off</mat-icon>
+  <button  mat-fab class="btn" (click)="startButton($event)">
+    <span *ngIf="!recognizing">
+      <img class="img-width" src="/assets/mic-off.svg">
+    </span>
+
+    <span *ngIf="recognizing">
+      <img class="img-width" src="/assets/mic.svg">
+    </span>
   </button>
 </div>
 

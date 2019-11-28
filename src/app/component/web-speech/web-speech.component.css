@@ -18,3 +18,24 @@
     margin-right: 20px;
   }
   
+  div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+  }
+
+  .btn {
+    background-color: rgb(238, 58, 58);
+    
+  }
+
+  .micro {
+    background-image: url("/assets/mic.svg") ;
+    width: 25px;
+    height: 25px;
+  }
+
+  .img-width{
+    width:25px;
+  }
