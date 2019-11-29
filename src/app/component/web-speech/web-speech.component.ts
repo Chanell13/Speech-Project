@@ -16,6 +16,7 @@ export class WebSpeechComponent implements OnInit {
   notification: string;
   languages: string[] = ['en-US', 'es-ES'];
   currentLanguage: string;
+  txt: string;
   // actionContext: ActionContext = new ActionContext();
 
   constructor(private changeDetector: ChangeDetectorRef,
@@ -100,5 +101,9 @@ export class WebSpeechComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
+  reset() {
+
+    this.txt = '';
+}
 
 }

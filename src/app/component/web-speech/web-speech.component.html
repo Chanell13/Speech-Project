@@ -1,27 +1,37 @@
-<div class="center">
-  <button  mat-fab class="btn" (click)="startButton($event)">
-    <span *ngIf="!recognizing">
-      <img class="img-width" src="/assets/mic-off.svg">
-    </span>
+<div class="groove">
+  <div class="center">
+    <button mat-fab class="btn" (click)="startButton($event)">
+      <span *ngIf="!recognizing">
+        <img class="img-width" src="/assets/mic-off.svg">
+      </span>
 
-    <span *ngIf="recognizing">
-      <img class="img-width" src="/assets/mic.svg">
-    </span>
-  </button>
-</div>
+      <span *ngIf="recognizing">
+        <img class="img-width" src="/assets/mic.svg">
+      </span>
+    </button>
+  </div>
 
-<form>
-  <mat-form-field class="Texto">
-    <textarea matInput [value]="finalTranscript" placeholder="Speech Input Result" rows="10" disabled="true"></textarea>
-  </mat-form-field>
-</form>
-<div>
-  <mat-select placeholder="Select your language" [(ngModel)]="currentLanguage" [disabled]="recognizing">
-    <mat-option *ngFor="let language of languages" [value]="language" (click)="onSelectLanguage(language)">
-      {{language}}
-    </mat-option>
+  <form>
+    <mat-form-field  class="Texto" class="center" class="p" >
+      <textarea matInput [value]="finalTranscript" placeholder="Speech Input Result" rows="10"
+        disabled="true" [(ngModel)]="txt"></textarea>
+    </mat-form-field>
+  </form>
+  <div>
+    <button class="myButton" (click)="reset()">Clean</button>
+  </div>
+  <div>
+    <mat-select class="selectborder" placeholder="Select your language" [(ngModel)]="currentLanguage"
+      [disabled]="recognizing">
+      <mat-option *ngFor="let language of languages" [value]="language" (click)="onSelectLanguage(language)">
+        {{language}}
+      </mat-option>
 
-  </mat-select>
+
+    </mat-select>
+
+
+  </div>
 </div>
 
 <mat-card *ngIf="notification" class="notification">{{notification}}</mat-card>
