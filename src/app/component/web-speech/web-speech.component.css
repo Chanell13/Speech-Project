@@ -56,6 +56,16 @@ div.gallery {
   background-color: rgb(255, 255, 255);
   
 }
+
+.selectborderlang {
+  border-style: ridge;
+  width: 450px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  background-color: rgb(255, 255, 255);
+  
+}
 .groove {
   border-style: groove;
   width: 500px;
@@ -102,5 +112,6 @@ div.gallery {
 .h1 {
   font-size: 5px;
 }
+
 
     

@@ -17,13 +17,12 @@ export class WebSpeechComponent implements OnInit {
   languages: string[] = ['en-US', 'es-ES'];
   currentLanguage: string;
   txt: string;
+  myVar: any;
   // actionContext: ActionContext = new ActionContext();
 
-  constructor(private changeDetector: ChangeDetectorRef,
-              private speechRecognizer: SpeechRecognizerService,
-              ) {
+  constructor(private changeDetector: ChangeDetectorRef, private speechRecognizer: SpeechRecognizerService) {
 
-              }
+  }
 
   ngOnInit() {
 
@@ -32,7 +31,6 @@ export class WebSpeechComponent implements OnInit {
     this.initRecognition();
     this.notification = null;
   }
-
   startButton(event) {
     if (this.recognizing) {
       this.speechRecognizer.stop();
@@ -51,7 +49,7 @@ export class WebSpeechComponent implements OnInit {
     this.speechRecognizer.onStart()
       .subscribe(data => {
         this.recognizing = true;
-       // this.notification = 'I\'m listening...';
+        // this.notification = 'I\'m listening...';
         this.detectChanges();
       });
 
@@ -67,9 +65,9 @@ export class WebSpeechComponent implements OnInit {
         const message = data.content.trim();
         if (data.info === 'final_transcript' && message.length > 0) {
           this.finalTranscript = `${this.finalTranscript}\n${message}`;
-         // this.actionContext.processMessage(message, this.currentLanguage);
+          // this.actionContext.processMessage(message, this.currentLanguage);
           this.detectChanges();
-         // this.actionContext.runAction(message, this.currentLanguage);
+          // this.actionContext.runAction(message, this.currentLanguage);
         }
       });
 
@@ -104,6 +102,12 @@ export class WebSpeechComponent implements OnInit {
   reset() {
 
     this.txt = '';
-}
+    this.finalTranscript = '';
+  }
+
+
+
+
+
 
 }

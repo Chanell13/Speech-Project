@@ -1,6 +1,6 @@
 <div class="groove">
   <div class="center">
-    <button mat-fab class="btn" (click)="startButton($event)">
+    <button mat-fab class="btn" (click)="myFunction($event)">
       <span *ngIf="!recognizing">
         <img class="img-width" src="/assets/mic-off.svg">
       </span>
@@ -13,24 +13,22 @@
 
   <form>
     <mat-form-field  class="Texto" class="center" class="p" >
-      <textarea matInput [value]="finalTranscript" placeholder="Speech Input Result" rows="10"
-        disabled="true" [(ngModel)]="txt"></textarea>
+      <textarea matInput [value]="finalTranscript" placeholder="" rows="10"
+        disabled="true" [(ngModel)]="txt" name="txt"></textarea>
     </mat-form-field>
   </form>
   <div>
     <button class="myButton" (click)="reset()">Clean</button>
   </div>
-  <div>
-    <mat-select class="selectborder" placeholder="Select your language" [(ngModel)]="currentLanguage"
+  <div class="selectborder">
+    <mat-select  placeholder="Select your language" [(ngModel)]="currentLanguage"
       [disabled]="recognizing">
-      <mat-option *ngFor="let language of languages" [value]="language" (click)="onSelectLanguage(language)">
+     
+      <mat-option class="selectborderlang" *ngFor="let language of languages" [value]="language" (click)="onSelectLanguage(language)">
         {{language}}
       </mat-option>
 
-
     </mat-select>
-
-
   </div>
 </div>
 

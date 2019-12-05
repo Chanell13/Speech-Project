@@ -13,14 +13,17 @@ export class SpeechRecognizerService {
   startTimestamp;
   ignoreOnEnd: boolean;
   language: string;
+  myVar: any;
 
-  constructor() {}
+  constructor() { }
 
   initialize(language: string): void {
     this.recognition = new webkitSpeechRecognition();
     this.recognition.continuous = true;
     this.recognition.interimResults = true;
     this.recognition.lang = language;
+    // this.recognition.
+
   }
 
   setLanguage(language: string) {
@@ -66,8 +69,17 @@ export class SpeechRecognizerService {
         let interimTranscript = '';
         let finalTranscript = '';
 
+        // console.log(event.results);
         for (let i = event.resultIndex; i < event.results.length; ++i) {
           if (event.results[i].isFinal) {
+            console.log('dejaste de hablar!! 8 ' + i);
+
+            // console.log(this.myVar);
+
+            // this.myVar = setTimeout(() => true, 5000);
+            console.log(' my var => ' + this.myVar);
+
+
             finalTranscript += event.results[i][0].transcript;
           } else {
             interimTranscript += event.results[i][0].transcript;
@@ -92,17 +104,24 @@ export class SpeechRecognizerService {
       this.recognition.onerror = (event) => {
         let result: SpeechError;
         if (event.error === 'no-speech') {
+          alert('dejaste de hablar!! 1');
+
           result = SpeechError.NO_SPEECH;
           this.ignoreOnEnd = true;
         }
         if (event.error === 'audio-capture') {
+          alert('dejaste de hablar!! 2 ');
           result = SpeechError.NO_MICROPHONE;
           this.ignoreOnEnd = true;
         }
         if (event.error === 'not-allowed') {
           if (event.timeStamp - this.startTimestamp < 100) {
+            alert('dejaste de hablar!! 3');
+
             result = SpeechError.BLOCKED;
-        } else {
+          } else {
+            alert('dejaste de hablar!! 4');
+
             result = SpeechError.NOT_ALLOWED;
           }
 
