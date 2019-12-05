@@ -26,9 +26,12 @@ div.gallery {
 }
 
 .btn {
-  background-color: rgb(58, 142, 238);
+  background-color: rgb(193, 204, 241);
 }
-
+.btn2 {
+  
+  background-color: rgb(137, 192, 250);
+}
 .micro {
   background-image: url("/assets/mic.svg");
   width: 25px;

@@ -1,10 +1,11 @@
 <div class="groove">
   <div class="center">
-    <button mat-fab class="btn" (click)="startButton($event)">
+    <button name="btn1" id="btn1" mat-fab class="btn" (click)="startButton($event) " *ngIf="!recognizing" >
       <span *ngIf="!recognizing">
         <img class="img-width" src="/assets/mic-off.svg">
       </span>
-
+    </button>
+    <button name="btn2" id="btn2" mat-fab class="btn2" (click)="startButton($event)" *ngIf="recognizing">
       <span *ngIf="recognizing">
         <img class="img-width" src="/assets/mic.svg">
       </span>
@@ -17,9 +18,7 @@
         disabled="true" [(ngModel)]="txt" name="txt"></textarea>
     </mat-form-field>
   </form>
-  <div>
-    <button class="myButton" (click)="reset()">Clean</button>
-  </div>
+
   <div class="selectborder">
     <mat-select  placeholder="Select your language" [(ngModel)]="currentLanguage"
       [disabled]="recognizing">

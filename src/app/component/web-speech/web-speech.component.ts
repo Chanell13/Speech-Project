@@ -7,6 +7,7 @@ import { SpeechError } from 'src/app/model/speech-error';
 const INITIAL_INIT_WINDOW = 3000;
 const STOP_WINDOW = 500;
 
+
 @Component({
   selector: 'app-web-speech',
   templateUrl: './web-speech.component.html',
@@ -21,6 +22,7 @@ export class WebSpeechComponent implements OnInit {
   txt: string;
   myVar: any;
   t0: number = null;
+  visible = false;
 
   constructor(private changeDetector: ChangeDetectorRef, private speechRecognizer: SpeechRecognizerService) {
 
@@ -34,8 +36,11 @@ export class WebSpeechComponent implements OnInit {
     this.notification = null;
   }
   startButton(event) {
-    if (this.recognizing) {
+    this.finalTranscript = '';
+    if (this.recognizing)  {
+
       this.speechRecognizer.stop();
+
       return;
     }
 
@@ -54,7 +59,6 @@ export class WebSpeechComponent implements OnInit {
     this.speechRecognizer.onStart()
       .subscribe(data => {
         this.recognizing = true;
-        // this.notification = 'I\'m listening...';
         this.detectChanges();
       });
 
@@ -73,9 +77,7 @@ export class WebSpeechComponent implements OnInit {
         const message = data.content.trim();
         if (data.info === 'final_transcript' && message.length > 0) {
           this.finalTranscript = `${this.finalTranscript}\n${message}`;
-          // this.actionContext.processMessage(message, this.currentLanguage);
           this.detectChanges();
-          // this.actionContext.runAction(message, this.currentLanguage);
         }
       });
 
@@ -107,15 +109,10 @@ export class WebSpeechComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
-  reset() {
-
-    this.txt = '';
-    this.finalTranscript = '';
-  }
-
   stop() {
     this.speechRecognizer.stop();
   }
+
 }
 
 function onNoData(that: WebSpeechComponent, isInitial: boolean): void {
@@ -127,5 +124,7 @@ function onNoData(that: WebSpeechComponent, isInitial: boolean): void {
     console.log('auto-stop');
     that.stop();
   }
+
+
 
 }

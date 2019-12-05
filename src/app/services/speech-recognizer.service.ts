@@ -72,7 +72,7 @@ export class SpeechRecognizerService {
             finalTranscript += event.results[i][0].transcript;
           } else {
             interimTranscript += event.results[i][0].transcript;
-//            console.log('interim transcript', event, interimTranscript);
+
           }
         }
 
